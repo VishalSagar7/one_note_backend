@@ -11,10 +11,12 @@ import handledelete from './routes/deleteRoute.js';
 dotenv.config();
 
 const server = express();
+
 server.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true,
+  origin: 'https://main--myonenote.netlify.app',
+  credentials: true,
 }));
+
 
 
 server.use('/api',diary);
