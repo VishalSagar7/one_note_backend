@@ -1,7 +1,11 @@
 import express from 'express';
 import signUpModel from '../Schemas/signUpSchema.js';
+import cors from 'cors'
+
 
 const records = express.Router();
+records.use(cors());
+
 records.use(express.json());
 
 records.post('/records', async (req, res) => {

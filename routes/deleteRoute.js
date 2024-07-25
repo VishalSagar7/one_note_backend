@@ -1,11 +1,15 @@
 import express from 'express';
 import signUpModel from '../Schemas/signUpSchema.js';
+import cors from 'cors'
 
 const handleDelete = express.Router();
+
+handleDelete.use(cors());
 
 handleDelete.use(express.json());
 
 handleDelete.post('/records/:id/delete', async (req, res) => {
+    
     const { id } = req.params;
     const { email } = req.body;
 

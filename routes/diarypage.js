@@ -1,8 +1,11 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid'; 
 import signUpModel from '../Schemas/signUpSchema.js';
+import cors from 'cors'
 
 const diary = express.Router();
+diary.use(cors());
+
 diary.use(express.json());
 
 diary.post('/diary', async (req, res) => {

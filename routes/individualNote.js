@@ -1,9 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import signUpModel from '../Schemas/signUpSchema.js ';
+import cors from 'cors'
 
 const individualnote = express.Router();
-
+individualnote.use(cors);
 individualnote.use(express.json());
 
 individualnote.post('/records/:id', async (req, res) => {

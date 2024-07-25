@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import signUpModel from './Schemas/signUpSchema.js';
-import cors from 'cors';
+import cors from 'cors'
 import diary from './routes/diarypage.js';
 import records from './routes/journal.js';
 import individualnote from './routes/individualNote.js';
@@ -12,9 +12,9 @@ dotenv.config();
 
 const server = express();
 
+
 server.use(cors({
-  origin: 'https://main--myonenote.netlify.app',
-  credentials: true,
+  origin: '*',
 }));
 
 
@@ -28,6 +28,7 @@ server.use(express.json());
 
 const port = process.env.PORT || 4001;
 
+// for testing purpose
 server.get('/', (req, res) => {
     res.send('<h1>This is the server</h1>');
 });
@@ -39,11 +40,11 @@ server.post('/login', async (req, res) => {
       const storedDocument = await signUpModel.findOne({ email: userEmail });
   
       if (!storedDocument) {
-        return res.json({ success: false, message: 'User not found' });
+        return res?.json({ success: false, message: 'User not found' });
       }
   
       if (storedDocument.password === userPassword) {
-        return res.json({ success: true, message: 'User found', storedDocument });
+        return res?.json({ success: true, message: 'User found', storedDocument });
       } else {
         return res.json({ success: false, message: 'Password is wrong' });
       }
